@@ -30,7 +30,26 @@ public:
 	};
 
 	// Modifiers
-	void push_front(const int& value);
+	void push_front(const int& value) {
+
+		if (num_elems == 0)
+		{
+			first = last = new Node;
+			first->value = value;
+			first->prev = nullptr;
+			first->next = nullptr;
+		}
+		else
+		{
+			Node* node = new Node;
+			node->value = value;
+			node->prev = nullptr;
+			node->next = first;
+			first->prev = node;
+			first = node;
+		}
+		num_elems++;
+	};
 	
 	//	->push_back to insert elements at the back of the list
 	void push_back(const int& value) {
